@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://traffic_lights/traffic_light_red.png" type="Texture" id=1]
+[ext_resource path="res://traffic_light.gd" type="Script" id=2]
+[ext_resource path="res://traffic_lights/traffic_light_green.png" type="Texture" id=3]
+[ext_resource path="res://traffic_lights/traffic_light_yellow 2.png" type="Texture" id=4]
+
+[node name="traffic_light" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="traffic_light_red" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 250, 752 )
+
+[node name="traffic_light_yellow" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 250, 752 )
+
+[node name="traffic_light_green" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 250, 752 )
+
+[node name="cycle_timer" type="Timer" parent="."]
+wait_time = 31.0
+autostart = true
+
+[connection signal="timeout" from="cycle_timer" to="." method="_on_cycle_timer_timeout"]
